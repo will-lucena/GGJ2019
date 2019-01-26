@@ -8,7 +8,8 @@ public class Enums
     {
         Knight,
         Rogue,
-        Paladin
+        Paladin,
+        Npc
     }
 
     public enum MonsterClass

@@ -5,6 +5,7 @@ using System;
 
 [RequireComponent(typeof(MovementScript))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
     public Action<float> notifyHpChange;

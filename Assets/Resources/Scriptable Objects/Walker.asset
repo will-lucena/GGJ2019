@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed30a1d4950a48b4bbe2615ff53b58a1, type: 3}
-  m_Name: Health Potion
+  m_Script: {fileID: 11500000, guid: 36754ec6d954242489700e162d87fd66, type: 3}
+  m_Name: Walker
   m_EditorClassIdentifier: 
-  id: 0
-  power: 1
-  icon: {fileID: 0}
+  speed: 2
+  jumpForce: 0
+  gravityDropModifier: 0
+  canDoubleJump: 0
+  type: 3

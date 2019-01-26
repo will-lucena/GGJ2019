@@ -15,7 +15,7 @@ TagManager:
   - 
   - Ground
   - Platform
-  - 
+  - Hitable
   - 
   - 
   - 
@@ -40,4 +40,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 3526806605
+    locked: 0
+  - name: Platform
+    uniqueID: 1435084513
+    locked: 0
+  - name: Player
+    uniqueID: 3156490687
+    locked: 0
+  - name: Monster
+    uniqueID: 3002720153
     locked: 0

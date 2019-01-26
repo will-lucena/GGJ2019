@@ -5,11 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New movement", menuName = "Movement")]
 public class Movement : ScriptableObject
 {
-    [Range(10f, 1000f)]
+    [Range(0f, 1000f)]
     public float speed;
-    [Range(1f, 30f)]
+    [Range(0f, 30f)]
     public float jumpForce;
-    [Range(1, 5)]
+    [Range(0, 5)]
     public int gravityDropModifier;
     public bool canDoubleJump;
     public Enums.PlayerClass type;
