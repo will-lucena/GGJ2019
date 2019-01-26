@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Monster : MonoBehaviour
 {
+    public Action<Word> dropWord;
+
     [SerializeField] private Enums.MonsterClass type;
     [Range(1, 3)]
     [SerializeField] private float atk;
@@ -36,7 +39,8 @@ public class Monster : MonoBehaviour
 
         if (hp <= 0)
         {
-            dropItem();
+            dropWord?.Invoke(drop);
+            Destroy(gameObject);
         }
     }
 
@@ -51,11 +55,6 @@ public class Monster : MonoBehaviour
             hInput *= -1;
         }
         Debug.Log(nextWayPoint);
-    }
-
-    private void dropItem()
-    {
-        Debug.Log(name + "died and drop " + drop.ToString());
     }
 
     private Vector3[] buildWay()

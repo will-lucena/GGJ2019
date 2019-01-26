@@ -11,10 +11,12 @@ public class MovementScript : MonoBehaviour
     {
         get
         {
-            return Physics2D.OverlapArea(new Vector2(transform.position.x - bodyOffset.x, transform.position.y - bodyOffset.y),
-                new Vector2(transform.position.x + bodyOffset.x, transform.position.y + bodyOffset.y), groundLayers);
+            return _isGrounded;
         }
     }
+
+    private bool _isGrounded;
+
     [SerializeField] private LayerMask groundLayers;
     [SerializeField] private Movement movement;
     [SerializeField] private string horizontalInput = "Horizontal";
@@ -34,9 +36,19 @@ public class MovementScript : MonoBehaviour
     {
         hMovement = Input.GetAxis(horizontalInput);
 
+        if (transform.localScale.x < 0 && hMovement < 0)
+        {
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y);
+        }
+        
+        if (transform.localScale.x > 0 && hMovement > 0)
+        {
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y);
+        }
+
         if (Input.GetButton("Jump"))
         {
-            if (isGrounded)
+            if (_isGrounded)
             {
                 rb.velocity = new Vector2(rb.velocity.x, 0);
                 rb.AddForce(Vector2.up * movement.jumpForce, ForceMode2D.Impulse);
@@ -68,5 +80,15 @@ public class MovementScript : MonoBehaviour
     {
         hMovement *= Time.deltaTime * movement.speed;
         rb.velocity = new Vector2(hMovement, rb.velocity.y);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        _isGrounded = true;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        _isGrounded = false;
     }
 }

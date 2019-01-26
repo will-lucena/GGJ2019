@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Word : MonoBehaviour
+[CreateAssetMenu(fileName ="new Word", menuName = "Item/Word")]
+public class Word : ScriptableObject
 {
-    public override string ToString()
-    {
-        return name;
-    }
+    public int id;
+    public string name;
 }

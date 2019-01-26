@@ -38,6 +38,7 @@ public class Player : MonoBehaviour
         inventory.Add(item);
         inventory.Add(item);
         notifyInventoryChange?.Invoke(inventory.Count);
+        HitBehaviour.updateHitBehaviourState += hitBehaviour;
     }
 
     private void Update()
@@ -45,9 +46,11 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            Debug.Log("atk");
-            animator.SetTrigger("toAtk");
-            receiveDamage(1);
+            if (!animator.GetBool("isAttacking"))
+            {
+                animator.SetTrigger("toAtk");
+            }
+            //receiveDamage(1);
         }
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
@@ -64,7 +67,7 @@ public class Player : MonoBehaviour
 
     private void LateUpdate()
     {
-        animator.SetFloat("xSpeed", rb.velocity.x);
+        animator.SetFloat("xSpeed", Mathf.Abs(rb.velocity.x));
         animator.SetFloat("ySpeed", rb.velocity.y);
         animator.SetBool("isJumping", !movement.isGrounded);
     }
@@ -97,4 +100,29 @@ public class Player : MonoBehaviour
             notifyInventoryChange?.Invoke(inventory.Count);
         }
     }
+
+    private void hitBehaviour(bool state)
+    {
+        animator.SetBool("isAttacking", state);
+    }
+
+    private void receiveWord(Word drop)
+    {
+        Word result = words.Find(word => word.id == drop.id);
+        if (!result)
+        {
+            words.Add(drop);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy") && animator.GetBool("isAttacking"))
+        {
+            Monster script = collision.gameObject.GetComponent<Monster>();
+            script.dropWord += receiveWord;
+            script.takeDamage(1);
+        }
+    }
+
 }
