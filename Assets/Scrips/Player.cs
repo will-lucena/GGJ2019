@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
 {
     public Action<float> notifyHpChange;
     public Action notifyDeath;
+    public Action<float> notifyInventoryChange;
 
     private Animator animator;
     private Rigidbody2D rb;
@@ -17,6 +18,10 @@ public class Player : MonoBehaviour
     [SerializeField] private List<Item> inventory;
     [SerializeField] private List<Word> words;
 
+    #region Tests variables
+    [SerializeField] private Item item;
+    private float time;
+    #endregion
     private MovementScript movement;
 
     private void Awake()
@@ -28,18 +33,26 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        
+        inventory.Add(item);
+        inventory.Add(item);
+        inventory.Add(item);
+        notifyInventoryChange?.Invoke(inventory.Count);
     }
 
     private void Update()
     {
-        if (Input.GetButton("Atk"))
+
+        if (Input.GetKeyDown(KeyCode.F))
         {
+            Debug.Log("atk");
             animator.SetTrigger("toAtk");
+            receiveDamage(1);
         }
-        if (Input.GetButton("Skill"))
+        if (Input.GetKeyDown(KeyCode.LeftControl))
         {
+            Debug.Log("skill");
             animator.SetTrigger("toUseSkill");
+            useItem(0);
         }
     }
 
@@ -65,21 +78,22 @@ public class Player : MonoBehaviour
         }
         else
         {
-            notifyHpChange?.Invoke(-damage);
+            notifyHpChange?.Invoke(hp);
             animator.SetTrigger("toTakeDamage");
         }
     }
 
     public void useItem(int itemID)
     {
-        Item result = inventory.Find(item => item.id == itemID);
+        Item result = inventory.FindLast(item => item.id == itemID);
         if (result)
         {
             float effect = result.restore();
             hp += effect;
-            notifyHpChange?.Invoke(effect);
+            notifyHpChange?.Invoke(hp);
             inventory.Remove(result);
             animator.SetTrigger("toUseItem");
+            notifyInventoryChange?.Invoke(inventory.Count);
         }
     }
 }
