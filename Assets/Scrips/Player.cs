@@ -43,8 +43,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.G))
         {
             if (!animator.GetBool("isAttacking"))
             {
