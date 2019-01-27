@@ -57,8 +57,6 @@ public class MovementScript : MonoBehaviour
         {
             if (_isGrounded)
             {
-                rb.velocity = new Vector2(rb.velocity.x, 0);
-                rb.velocity = new Vector2(rb.velocity.x, 0);
                 rb.AddForce(Vector2.up * finalJumpForce(), ForceMode2D.Impulse);
             }
         }
