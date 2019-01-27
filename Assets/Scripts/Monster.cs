@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Monster : MonoBehaviour
+public class Monster : MonoBehaviour, IHittable
 {
     [SerializeField] private Enums.MonsterClasses type;
     [Range(1, 5)]
@@ -15,7 +15,7 @@ public class Monster : MonoBehaviour
         behaviour.speed = movement.speed;
     }
 
-    public void takeDamage(float damage)
+    public void receiveDamage(float damage)
     {
         hp -= damage;
 

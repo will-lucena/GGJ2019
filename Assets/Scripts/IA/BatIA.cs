@@ -4,9 +4,6 @@ public class BatIA : IA
 {
     [Range(1, 3)]
     [SerializeField] private float atk;
-
-    private Animator animator;
-    private Rigidbody2D rb;
     [SerializeField] private Vector3 target;
     [SerializeField] private float flySpeed;
 
@@ -49,15 +46,12 @@ public class BatIA : IA
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            /*
             if (!collision.gameObject.GetComponent<Animator>().GetBool("isAttacking"))
             {
                 collision.gameObject.GetComponent<Player>().receiveDamage(atk);
             }
-            /**/
         }
     }
-
     private void turnOff()
     {
         Destroy(gameObject);

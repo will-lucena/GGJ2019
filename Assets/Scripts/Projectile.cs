@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Collider2D))]
 public class Projectile : MonoBehaviour
 {
     private Rigidbody2D rb;
+    [SerializeField] string target;
 
     private void Awake()
     {
@@ -14,12 +16,12 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag(target))
         {
-            Monster script = collision.gameObject.GetComponent<Monster>();
-            script.takeDamage(1);
+            IHittable script = collision.gameObject.GetComponent<IHittable>();
+            script.receiveDamage(1);
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
 
     public void launch(float force, Transform spawn, float direction)

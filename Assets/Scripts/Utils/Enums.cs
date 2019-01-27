@@ -16,7 +16,8 @@ public class Enums
     {
         Fly,
         Boss,
-        Regular
+        Regular,
+        Shooter
     }
 
     public enum Powerups

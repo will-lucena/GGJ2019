@@ -6,7 +6,7 @@ using System;
 [RequireComponent(typeof(MovementScript))]
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody2D))]
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IHittable
 {
     public Action<float> notifyHpChange;
     public Action notifyDeath;
@@ -130,7 +130,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy") && animator.GetBool("isAttacking"))
         {
             Monster script = collision.gameObject.GetComponent<Monster>();
-            script.takeDamage(1);
+            script.receiveDamage(1);
         }
     }
 
