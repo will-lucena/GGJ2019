@@ -59,7 +59,7 @@ public class BatIA : IA
 
     private void flee()
     {
-        rb.AddForce(Vector2.left * speed, ForceMode2D.Force);
+        rb.AddForce(Vector2.right * speed, ForceMode2D.Force);
         Invoke("turnOff", 3f);
     }
 }

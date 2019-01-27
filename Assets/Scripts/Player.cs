@@ -55,11 +55,6 @@ public class Player : MonoBehaviour, IHittable
         }
     }
 
-    private void FixedUpdate()
-    {
-        
-    }
-
     private void LateUpdate()
     {
         animator.SetFloat("xSpeed", Mathf.Abs(rb.velocity.x));
@@ -73,7 +68,7 @@ public class Player : MonoBehaviour, IHittable
         if (hp <= 0)
         {
             notifyDeath?.Invoke();
-            animator.SetTrigger("toDeath");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Menu 1");
         }
         else
         {
@@ -129,7 +124,7 @@ public class Player : MonoBehaviour, IHittable
     {
         if (collision.gameObject.CompareTag("Enemy") && animator.GetBool("isAttacking"))
         {
-            Monster script = collision.gameObject.GetComponent<Monster>();
+            IHittable script = collision.gameObject.GetComponent<IHittable>();
             script.receiveDamage(1);
         }
     }
