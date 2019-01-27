@@ -5,7 +5,7 @@ using UnityEngine;
 public class PowerUp : ScriptableObject
 {
     public int id;
-    public Enums.Powerup type;
+    public Enums.Powerups type;
     [Range(0, 1000f)]
     [SerializeField] protected float amount;
     public virtual float effect()

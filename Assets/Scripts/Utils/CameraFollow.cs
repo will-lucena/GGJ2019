@@ -10,20 +10,23 @@ public class CameraFollow : MonoBehaviour
 
     private Vector3 desiredPosition;
 
+    private void Start()
+    {
+        if (target)
+        {
+            target.gameObject.GetComponent<MovementScript>().notifySpin += updateOffset;
+        }
+    }
+
     private void FixedUpdate()
     {
-        if (isOutOfBounds(target))
-        {
-            desiredPosition = target.position + offset;
-        }
+        desiredPosition = target.position + offset;
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, speed);
         transform.position = new Vector3(smoothedPosition.x, smoothedPosition.y, -10);
     }
 
-    private bool isOutOfBounds(Transform target)
+    private void updateOffset()
     {
-        float xDistance = Mathf.Abs(transform.position.x + target.position.x);
-        float yDistance = Mathf.Abs(transform.position.y + target.position.y);
-        return xDistance > offset.x || yDistance > offset.y;
+        offset.x *= -1;
     }
 }

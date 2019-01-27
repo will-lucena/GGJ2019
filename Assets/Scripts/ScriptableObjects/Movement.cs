@@ -12,7 +12,7 @@ public class Movement : ScriptableObject
     [Range(0, 5)]
     [SerializeField] private int _gravityDropModifier;
     public bool canDoubleJump;
-    public Enums.PlayerClass type;
+    public Enums.PlayerClasses type;
 
     public float speed
     {

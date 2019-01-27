@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enums
 {
-    public enum PlayerClass
+    public enum PlayerClasses
     {
         Knight,
         Rogue,
@@ -12,19 +12,30 @@ public class Enums
         Npc
     }
 
-    public enum MonsterClass
+    public enum MonsterClasses
     {
         Fly,
         Boss,
         Regular
     }
 
-    public enum Powerup
+    public enum Powerups
     {
         MaxHealth,
         Speed,
         JumpForce,
         Damage,
         GravityScale
+    }
+
+    public enum Checkpoints
+    {
+        HorizontalMovement,
+        Jump,
+        Hit,
+        Spell,
+        CatchItem,
+        UseItem,
+        NextLevel
     }
 }

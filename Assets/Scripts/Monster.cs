@@ -2,7 +2,7 @@
 
 public class Monster : MonoBehaviour
 {
-    [SerializeField] private Enums.MonsterClass type;
+    [SerializeField] private Enums.MonsterClasses type;
     [Range(1, 5)]
     [SerializeField] private float hp;
     [SerializeField] private Word drop;

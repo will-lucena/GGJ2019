@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Ground
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
@@ -15,9 +16,9 @@ TagManager:
   - UI
   - 
   - 
-  - Ground
-  - Platform
+  - Walkable
   - Hitable
+  - 
   - 
   - 
   - 
@@ -46,12 +47,9 @@ TagManager:
   - name: Background
     uniqueID: 3526806605
     locked: 0
-  - name: Platform
+  - name: Walkable
     uniqueID: 1435084513
     locked: 0
-  - name: Player
+  - name: Interactable
     uniqueID: 3156490687
-    locked: 0
-  - name: Monster
-    uniqueID: 3002720153
     locked: 0

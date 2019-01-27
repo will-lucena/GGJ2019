@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public Action<float> notifyHpChange;
     public Action notifyDeath;
     public Action<float> notifyInventoryChange;
+    public Action<string> notifyCheckpoint;
 
     private Animator animator;
     private Rigidbody2D rb;
@@ -113,6 +114,14 @@ public class Player : MonoBehaviour
         if (!result)
         {
             words.Add(drop);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Checkpoint"))
+        {
+            notifyCheckpoint?.Invoke(collision.gameObject.name);
         }
     }
 

@@ -6,6 +6,7 @@ using System;
 public class MovementScript : MonoBehaviour
 {
     public Func<List<PowerUp>> requestPowerups;
+    public Action notifySpin;
 
     private Rigidbody2D rb;
     [SerializeField] private Vector2 bodyOffset;
@@ -81,17 +82,19 @@ public class MovementScript : MonoBehaviour
         if (transform.localScale.x < 0 && hMovement < 0)
         {
             transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y);
+            notifySpin?.Invoke();
         }
 
         if (transform.localScale.x > 0 && hMovement > 0)
         {
             transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y);
+            notifySpin?.Invoke();
         }
     }
 
     private float finalSpeed()
     {
-        PowerUp result = requestPowerups?.Invoke().Find(powerup => powerup.type == Enums.Powerup.Speed);
+        PowerUp result = requestPowerups?.Invoke().Find(powerup => powerup.type == Enums.Powerups.Speed);
 
         if (result)
         {
@@ -102,7 +105,7 @@ public class MovementScript : MonoBehaviour
 
     private float finalJumpForce()
     {
-        PowerUp result = requestPowerups?.Invoke().Find(powerup => powerup.type == Enums.Powerup.JumpForce);
+        PowerUp result = requestPowerups?.Invoke().Find(powerup => powerup.type == Enums.Powerups.JumpForce);
 
         if (result)
         {
@@ -113,7 +116,7 @@ public class MovementScript : MonoBehaviour
 
     private float finalGravityScale()
     {
-        PowerUp result = requestPowerups?.Invoke().Find(powerup => powerup.type == Enums.Powerup.GravityScale);
+        PowerUp result = requestPowerups?.Invoke().Find(powerup => powerup.type == Enums.Powerups.GravityScale);
 
         if (result)
         {
