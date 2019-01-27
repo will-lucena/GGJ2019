@@ -22,10 +22,6 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform launchPoint;
     [SerializeField] private float launchForce;
 
-    #region Tests variables
-    [SerializeField] private Item item;
-    private float time;
-    #endregion
     private MovementScript movement;
 
     private void Awake()
@@ -51,12 +47,10 @@ public class Player : MonoBehaviour
             {
                 animator.SetTrigger("toAtk");
             }
-            //receiveDamage(1);
         }
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             animator.SetTrigger("toUseSkill");
-            useItem(0);
         }
     }
 
@@ -127,7 +121,6 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy") && animator.GetBool("isAttacking"))
         {
             Monster script = collision.gameObject.GetComponent<Monster>();
-            script.dropWord += receiveWord;
             script.takeDamage(1);
         }
     }

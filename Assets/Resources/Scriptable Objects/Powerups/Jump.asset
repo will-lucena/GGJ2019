@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: Speed
-  m_EditorClassIdentifier: Assembly-CSharp::IncreaseSpeed
-  id: 0
-  type: 1
-  amount: 400
+  m_Name: Jump
+  m_EditorClassIdentifier: Assembly-CSharp::IncreaseJumpForce
+  id: 1
+  type: 2
+  amount: 3
