@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36754ec6d954242489700e162d87fd66, type: 3}
   m_Name: Paladin
   m_EditorClassIdentifier: 
-  speed: 400
-  jumpForce: 10
-  gravityDropModifier: 2
-  canDoubleJump: 1
+  _speed: 400
+  _jumpForce: 10
+  _gravityDropModifier: 2
+  canDoubleJump: 0
   type: 2

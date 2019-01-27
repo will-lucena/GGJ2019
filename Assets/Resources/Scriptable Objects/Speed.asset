@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95215cb7192297c40b58f2558be410e6, type: 3}
-  m_Name: Casa
-  m_EditorClassIdentifier: 
+  m_Script: {fileID: 0}
+  m_Name: Speed
+  m_EditorClassIdentifier: Assembly-CSharp::IncreaseSpeed
   id: 0
-  name: casa
-  powerUp: {fileID: 11400000, guid: 882e273651851b14887255fc0097abf7, type: 2}
+  type: 1
+  amount: 400

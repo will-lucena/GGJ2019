@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36754ec6d954242489700e162d87fd66, type: 3}
   m_Name: Walker
   m_EditorClassIdentifier: 
-  speed: 2
-  jumpForce: 0
-  gravityDropModifier: 0
+  _speed: 10
+  _jumpForce: 0
+  _gravityDropModifier: 0
   canDoubleJump: 0
   type: 3
