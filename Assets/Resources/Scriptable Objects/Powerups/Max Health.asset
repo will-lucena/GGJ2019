@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Max Health
   m_EditorClassIdentifier: Assembly-CSharp::IncreaseMaxHealth
-  id: 2
+  id: 0
   type: 0
   amount: 1

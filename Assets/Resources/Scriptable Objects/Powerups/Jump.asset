@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Jump
   m_EditorClassIdentifier: Assembly-CSharp::IncreaseJumpForce
-  id: 1
+  id: 2
   type: 2
   amount: 3

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Speed
   m_EditorClassIdentifier: Assembly-CSharp::IncreaseSpeed
-  id: 0
+  id: 1
   type: 1
-  amount: 200
+  amount: 150

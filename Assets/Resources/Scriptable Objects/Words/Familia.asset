@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95215cb7192297c40b58f2558be410e6, type: 3}
+  m_Script: {fileID: 11500000, guid: ee896e662ebc6c842b8745d8c9eb6b8d, type: 3}
   m_Name: Familia
   m_EditorClassIdentifier: 
-  id: 2
-  name: Familia
-  powerUp: {fileID: 11400000, guid: 08013b3c732330a4e87ed7e7682c347f, type: 2}
+  id: 3
+  powerUp: {fileID: 11400000, guid: 70546afa1ebfa7247a48800a52acbe33, type: 2}

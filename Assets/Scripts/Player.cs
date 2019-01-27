@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         notifyInventoryChange?.Invoke(inventory.Count);
-        HitBehaviour.updateHitBehaviourState += hitBehaviour;
+        PaladinHitBehaviour.updateHitBehaviourState += hitBehaviour;
         SpellBehaviour.throwSpell += launchSpell;
         movement.requestPowerups += powerups;
     }
