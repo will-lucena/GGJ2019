@@ -15,6 +15,8 @@ public class Player : MonoBehaviour, IHittable
 
     private Animator animator;
     private Rigidbody2D rb;
+    private SpriteRenderer sprite;
+    private bool isIvunerable = false;
 
     [SerializeField] private float hp;
     [SerializeField] private List<Item> inventory;
@@ -30,6 +32,7 @@ public class Player : MonoBehaviour, IHittable
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         movement = GetComponent<MovementScript>();
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     private void Start()
@@ -64,17 +67,31 @@ public class Player : MonoBehaviour, IHittable
 
     public void receiveDamage(float damage)
     {
-        hp -= damage;
-        if (hp <= 0)
+        if (!isIvunerable)
         {
-            notifyDeath?.Invoke();
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Menu 1");
+            hp -= damage;
+            if (hp <= 0)
+            {
+                notifyDeath?.Invoke();
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Menu 1");
+            }
+            else
+            {
+                notifyHpChange?.Invoke(hp);
+                animator.SetTrigger("toTakeDamage");
+                StartCoroutine(becomeIvunerable());
+            }
         }
-        else
-        {
-            notifyHpChange?.Invoke(hp);
-            animator.SetTrigger("toTakeDamage");
-        }
+    }
+
+    private IEnumerator becomeIvunerable()
+    {
+        isIvunerable = true;
+        Color32 initialColor = sprite.color;
+        sprite.color = new Color32(255, 127, 127, 255);
+        yield return new WaitForSeconds(1.3f);
+        sprite.color = initialColor;
+        isIvunerable = false;
     }
 
     public void useItem(int itemID)
