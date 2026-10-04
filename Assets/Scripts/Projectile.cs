@@ -34,7 +34,7 @@ public class Projectile : MonoBehaviour
 
     private void turnOff()
     {
-        rb.velocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
         Destroy(gameObject);
     }
 }

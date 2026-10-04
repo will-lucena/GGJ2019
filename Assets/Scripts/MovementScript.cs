@@ -48,7 +48,7 @@ public class MovementScript : MonoBehaviour
     private void FixedUpdate()
     {
         hMovement *= Time.deltaTime * finalSpeed();
-        rb.velocity = new Vector2(hMovement, rb.velocity.y);
+        rb.linearVelocity = new Vector2(hMovement, rb.linearVelocity.y);
     }
 
     private void jump()
@@ -64,12 +64,12 @@ public class MovementScript : MonoBehaviour
 
     private void manageGravityScale()
     {
-        if (rb.velocity.y == movement.jumpForce)
+        if (rb.linearVelocity.y == movement.jumpForce)
         {
             rb.gravityScale = finalGravityScale();
         }
 
-        if (rb.velocity.y == 0)
+        if (rb.linearVelocity.y == 0)
         {
             rb.gravityScale = 1;
         }
