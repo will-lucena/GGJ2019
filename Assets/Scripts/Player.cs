@@ -60,8 +60,8 @@ public class Player : MonoBehaviour, IHittable
 
     private void LateUpdate()
     {
-        animator.SetFloat("xSpeed", Mathf.Abs(rb.velocity.x));
-        animator.SetFloat("ySpeed", rb.velocity.y);
+        animator.SetFloat("xSpeed", Mathf.Abs(rb.linearVelocity.x));
+        animator.SetFloat("ySpeed", rb.linearVelocity.y);
         animator.SetBool("isJumping", !movement.isGrounded);
     }
 

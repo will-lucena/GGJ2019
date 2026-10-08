@@ -27,12 +27,12 @@ public class Buttons : MonoBehaviour
 
     public void LoadCredits()
     {
-        credits.active = true;
+        credits.SetActive(true);
     }
 
     public void LoadMenu()
     {
-        credits.active = false;
+        credits.SetActive(false);
     }
 
     public void QuitGame()
